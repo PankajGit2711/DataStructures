@@ -3,14 +3,14 @@ using namespace std;
 
 int main()
 {
-    int n, m;
-    cin >> n >> m;
+    int nodes, edges;
+    cin >> nodes >> edges;
     
-    vector<pair<int, int>> adj[n+1];
+    vector<pair<int, int>> adj[nodes+1];
     
-    for(int i = 0; i < m; i++)
+    for(int i = 0; i < edges; i++)
     {
-        int u, v, wt;
+        int u, v, wt; // u and v represents node 1 and node 2 which are connected by an edge.
         cin >> u >> v >> wt;
         
         adj[u].push_back({v, wt});
