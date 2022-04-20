@@ -1,30 +1,19 @@
+// Time Complexity = O(N + E)
+// Space Complexity = O(N + E) + O(N) + O(N)
+
 #include<bits/stdc++.h>
 using namespace std;
 
-void dfs(int node, vector<int> &vis, vector<int> adj[], vector<int> &storeDFS)
+void dfsGraph(int node, vector<bool>& visited, vector<int> adj[], vector<int>& out)
 {
-    storeDFS.push_back(node);
-    vis[node] = 1;
-    for(auto it: adj[node])
+    out.push_back(node);
+    visited[node] = true;
+    for(auto &neighbour: adj[node])
     {
-        if(!vis[it])
-            dfs(it, vis, adj, storeDFS);
+        if(visited[neighbour] == false)
+            dfsGraph(neighbour, visited, adj, out);
     }
 }
-
-vector<int> dfsGraph(int V, vector<int> adj[])
-{
-    vector<int> storeDFS;
-    vector<int> vis(V+1, 0);
-    
-    for(int i = 1; i <= V; i++)
-    {
-        if(!vis[i])
-            dfs(i, vis, adj, storeDFS);
-    }
-    return storeDFS;
-}
-
 
 
 int main()
@@ -43,9 +32,16 @@ int main()
         adj[v].push_back(u);
     }
     
-    vector<int> ans = dfsGraph(V, adj);
+    vector<int> out;
+    vector<bool> visited(V + 1, false);
     
-    for (auto &it: ans) {
+    for(int i = 1; i <= V; i++)
+    {
+        if(visited[i] == false)
+            dfsGraph(i, visited, adj, out);
+    }
+    
+    for (auto &it: out) {
         cout << it << ' ';
     }
     cout << endl;
