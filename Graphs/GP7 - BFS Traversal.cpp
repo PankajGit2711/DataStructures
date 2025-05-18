@@ -1,7 +1,7 @@
 /*
 GP7 - Breadth First Search Traversal in a Graph
 
-Time Complexity = O(V) + O(2E) = O(V + 2E) = O(V + E) // Runs for a all node and for each node it will run for all of it's degrees which is 2 * Edges for a node.
+Time Complexity = O(V) + O(2E) = O(V + 2E) = O(V + E) // Runs for all nodes and for each node it will run for all of it's degrees which is 2 * Edges for a node.
 Space Complexity = O(3N) = O(N) // Queue + Visited Array + Adjacency List
 
 Tested with the following input gives following output
